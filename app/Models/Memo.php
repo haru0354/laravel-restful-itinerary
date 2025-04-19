@@ -4,14 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Trip extends Model
+class Memo extends Model
 {
     protected $fillable = [
         'user_id',
-        'start_date',
-        'end_date',
+        'trip_id',
         'title',
-        'destination',
+        'content',
     ];
 
     public function user()
@@ -19,8 +18,8 @@ class Trip extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function memos()
+    public function trip()
     {
-        return $this->hasMany(Memo::class);
+        return $this->belongsTo(Trip::class);
     }
 }
