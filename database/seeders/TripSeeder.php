@@ -53,8 +53,8 @@ class TripSeeder extends Seeder
                 'user_id'    => 2,
                 'start_date' => '2025-11-05',
                 'end_date'   => '2025-11-12',
-                'title'      => '韓国・ソウルグルメ旅行',
-                'destination' => '韓国・ソウル',
+                'title'      => 'イタリア・ローマ遺跡巡りの旅',
+                'destination' => 'イタリア',
             ],
         ]);
     }
