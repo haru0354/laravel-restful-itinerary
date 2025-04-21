@@ -37,7 +37,17 @@ class TripController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userId = Auth::id();
+
+        Trip::create([
+            'user_id' => $userId,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'title' => $request->title,
+            'destination' => $request->destination,
+        ]);
+
+        return to_route('dashboard.trips.index');
     }
 
     /**
