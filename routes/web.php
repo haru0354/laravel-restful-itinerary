@@ -21,6 +21,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])
             ->name('trips.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
             });
     });
 
