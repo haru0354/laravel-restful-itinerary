@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
 {
@@ -12,7 +14,14 @@ class TripController extends Controller
      */
     public function index()
     {
-        return view('dashboard.trips.index');
+        $userId = Auth::id();
+
+        $trips = Trip::where('user_id', $userId)
+            ->select('id', 'start_date', 'end_date', 'title', 'destination')
+            ->orderBy('start_date', 'asc')
+            ->paginate(9);
+
+        return view('dashboard.trips.index', compact('trips'));
     }
 
     /**
