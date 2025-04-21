@@ -53,10 +53,20 @@ class TripController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($trip_id)
     {
-        //
+        $trip = Trip::where('id', $trip_id)
+            ->select('id', 'start_date', 'end_date', 'title', 'destination')
+            ->first();
+
+        if (!$trip) {
+            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
+        }
+
+        
+        return view('dashboard.trips.show', compact('trip'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
