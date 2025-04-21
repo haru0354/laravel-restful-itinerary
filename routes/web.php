@@ -8,11 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('dashboard')
+
+Route::prefix('dashboard')->middleware(['auth', 'verified'])
+    ->name('dashboard.')
     ->group(function () {
         Route::get('/', function () {
             return view('dashboard');
-        })->middleware(['auth', 'verified'])->name('dashboard');
+        })->name('index');
 
         Route::prefix('trips')
             ->controller(TripController::class)
