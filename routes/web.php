@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Dashboard\TripController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +13,13 @@ Route::prefix('dashboard')
         Route::get('/', function () {
             return view('dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard');
+
+        Route::prefix('trips')
+            ->controller(TripController::class)
+            ->name('trips.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+            });
     });
 
 Route::middleware('auth')->group(function () {
