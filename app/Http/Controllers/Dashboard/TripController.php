@@ -63,7 +63,7 @@ class TripController extends Controller
             return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
         }
 
-        
+
         return view('dashboard.trips.show', compact('trip'));
     }
 
@@ -71,9 +71,17 @@ class TripController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $trip_id)
     {
-        //
+        $trip = Trip::where('id', $trip_id)
+            ->select('id', 'start_date', 'end_date', 'title', 'destination')
+            ->first();
+
+        if (!$trip) {
+            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
+        }
+
+        return view('dashboard.trips.edit', compact('trip'));
     }
 
     /**
