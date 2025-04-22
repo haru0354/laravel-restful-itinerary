@@ -28,6 +28,11 @@
                 <button class="block mx-auto w-[150px] my-4 py-2 px-4 text-center rounded bg-blue-500">編集</button>
                 <a href="{{ route('dashboard.trips.show', ['trip_id' => $trip->id]) }}" class="block mx-auto w-[150px] my-4 py-2 px-4 text-center rounded bg-gray-500">キャンセル</a>
             </form>
+            <form method="POST" action="{{ route('dashboard.trips.destroy', [ 'trip_id' => $trip->id ]) }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="block mx-auto w-[150px] my-4 py-2 px-4 text-center rounded bg-red-500">削除する</button>
+            </form>
         </div>
     </div>
 </x-app-layout>

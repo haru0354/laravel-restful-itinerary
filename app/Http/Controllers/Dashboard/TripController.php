@@ -109,8 +109,16 @@ class TripController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $trip_id)
     {
-        //
+        $trip = Trip::find($trip_id);
+
+        if (!$trip) {
+            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
+        }
+
+        $trip->delete();
+
+        return to_route('dashboard.trips.index');
     }
 }

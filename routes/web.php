@@ -26,6 +26,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])
                 Route::get('/{trip_id}', 'show')->name('show');
                 Route::get('/{trip_id}/edit', 'edit')->name('edit');
                 Route::put('/{trip_id}', 'update')->name('update');
+                Route::delete('/{trip_id}', 'destroy')->name('destroy');
             });
     });
 
