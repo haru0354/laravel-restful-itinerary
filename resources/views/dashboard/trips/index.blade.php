@@ -15,10 +15,11 @@
                         <h3 class="text-xl font-semibold">{{ $trip->title }}</h3>
                     </div>
                     <p class="py-2">{{ $trip->destination }}</p>
-                    <div class="py-1">
+                    <div class="pt-2 pb-4">
                         <p>✈️ {{ $trip->start_date }}</p>
                         <p>🏠 {{ $trip->end_date }}</p>
                     </div>
+                    <a href="{{ route('dashboard.trips.show', ['trip_id' => $trip->id]) }}" class="font-medium text-sky-500 hover:text-sky-600 transition">詳細を見る →</a>
                 </div>
                 @endforeach
                 <button class="min-h-[210px] p-6 rounded-lg shadow-md hover:shadow-lg border border-blue-300 bg-white transition">

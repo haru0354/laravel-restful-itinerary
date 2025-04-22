@@ -14,6 +14,8 @@
                     <p>帰宅日：{{ $trip->end_date }}</p>
                     <p>旅行先：{{ $trip->destination  }}</p>
                 </div>
+                <a href="{{ route('dashboard.trips.edit', ['trip_id' => $trip->id]) }}" class="block mx-auto w-[180px] my-4 py-2 px-4 text-center rounded bg-blue-500">編集する</a>
+                <a href="{{ route('dashboard.trips.index') }}" class="block mx-auto w-[180px] my-4 py-2 px-4 text-center rounded bg-green-500">旅のしおりの一覧へ</a>
             </div>
         </div>
     </div>

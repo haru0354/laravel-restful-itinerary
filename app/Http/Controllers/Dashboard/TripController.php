@@ -87,9 +87,23 @@ class TripController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $trip_id)
     {
-        //
+        $trip = Trip::where('id', $trip_id)
+            ->select('id', 'start_date', 'end_date', 'title', 'destination')
+            ->first();
+
+        if (!$trip) {
+            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
+        }
+
+        $trip->start_date = $request->start_date;
+        $trip->end_date = $request->end_date;
+        $trip->title = $request->title;
+        $trip->destination = $request->destination;
+        $trip->save();
+
+        return to_route('dashboard.trips.show', ['trip_id' => $trip->id]);
     }
 
     /**

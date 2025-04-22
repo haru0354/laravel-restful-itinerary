@@ -7,7 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl w-full mx-auto sm:px-6 lg:px-8 bg-white shadow-sm">
-            <form class="w-full max-w-[480px] mx-auto p-6 border rounded border-gray-400 bg-white">
+            <form method="POST" action="{{ route('dashboard.trips.update', [$trip->id]) }}" class="w-full max-w-[480px] mx-auto p-6 border rounded border-gray-400 bg-white">
+                @csrf
+                @method('PUT')
                 <p class="text-center text-2xl sm:text-3xl font-semibold">旅のしおりの編集</p>
                 <div class="flex justify-center">
                     <div class="flex flex-col mr-4">
