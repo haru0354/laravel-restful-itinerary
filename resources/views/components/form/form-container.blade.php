@@ -6,5 +6,5 @@
     @csrf
     {{ $slot }}
     <x-ui.button size="normal" color="blue" class="mt-8 block mx-auto rounded">{{ $buttonTitle }}</x-ui.button>
-    <x-ui.button-link size="normal" color="gray" route="{{ $backRoute }}" class="mt-8 w-[180px] block mx-auto rounded">キャンセル</x-ui.button-link>
+    <x-ui.button-link size="normal" color="gray" route="{{ $backRoute }}" class="mt-4 w-[180px] block mx-auto rounded">キャンセル</x-ui.button-link>
 </form>
