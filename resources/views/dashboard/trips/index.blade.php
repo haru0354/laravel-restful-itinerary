@@ -22,9 +22,9 @@
                     <a href="{{ route('dashboard.trips.show', ['trip_id' => $trip->id]) }}" class="font-medium text-sky-500 hover:text-sky-600 transition">詳細を見る →</a>
                 </div>
                 @endforeach
-                <button class="min-h-[210px] p-6 rounded-lg shadow-md hover:shadow-lg border border-blue-300 bg-white transition">
+                <a href="{{ route('dashboard.trips.create') }}" class="flex items-center justify-center min-h-[210px] p-6 rounded-lg shadow-md hover:shadow-lg border border-blue-300 bg-white hover:bg-blue-200 transition cursor-pointer ">
                     ➕
-                </button>
+                </a>
             </div>
         </div>
     </div>
