@@ -9,18 +9,16 @@
     ];
 
     $sizes = [
-        'full' => 'w-full m-2 px-6 py-3',
-        'normal' => 'min-w-[180px] m-2 px-8 py-3',
-        'small' => 'min-w-[110px] m-2 px-4 py-3',
-        'mini' => 'px-1 py-0',
+        'full' => 'w-full my-2 py-3 px-6',
+        'normal' => 'min-w-[180px] my-2 py-3 px-8',
+        'small' => 'min-w-[120px] my-2 py-3 px-4',
     ];
 
     $colorClass = $colors[$color] ?? $colors['blue'];
     $sizeClass = $sizes[$size] ?? $sizes['normal'];
-
 @endphp
 
 <a href="{{ $route }}"
-    {{ $attributes->merge(['class' => "$colorClass $sizeClass text-white font-bold shadow-md transition duration-200"]) }} >
+    {{ $attributes->merge(['class' => "$colorClass $sizeClass text-center text-white font-bold shadow-md transition duration-200"]) }} >
     {{ $slot }}
 </a>
