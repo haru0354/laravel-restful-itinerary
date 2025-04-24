@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl w-full mx-auto sm:px-6 lg:px-8 bg-white shadow-sm">
+        <div class="max-w-7xl w-full mx-auto p-6 bg-white shadow-sm">
             <x-form.form-container method="POST" action="{{ route('dashboard.trips.store') }}" title="旅のしおりの登録" buttonTitle="新規登録する" backRoute="{{ route('dashboard.trips.index') }}">
                 @csrf
                 <div class="flex justify-center">

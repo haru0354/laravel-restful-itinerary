@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl w-full mx-auto sm:px-6 lg:px-8 bg-white shadow-sm">
+        <div class="max-w-7xl w-full mx-auto p-6 bg-white shadow-sm">
             <x-form.form-container method="POST" action="{{ route('dashboard.trips.update', [$trip->id]) }}"
                 title="旅のしおりの編集" buttonTitle="編集する" backRoute="{{ route('dashboard.trips.show', ['trip_id' => $trip->id]) }}">
                 @method('PUT')
