@@ -14,7 +14,7 @@
                     <p>{{ $memo->content }}</p>
                 </div>
                 @endforeach
-                <a href="{{ route('dashboard.trips.create') }}" class="flex items-center justify-center min-h-[130px] p-6 rounded-lg shadow-md hover:shadow-lg border border-blue-300 bg-white hover:bg-blue-200 transition cursor-pointer">
+                <a href="{{ route('dashboard.trips.memos.create', ['trip_id' => $trip->id] ) }}" class="flex items-center justify-center min-h-[130px] p-6 rounded-lg shadow-md hover:shadow-lg border border-blue-300 bg-white hover:bg-blue-200 transition cursor-pointer">
                     ➕
                 </a>
             </div>
