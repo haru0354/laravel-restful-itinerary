@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Memo;
 use App\Models\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MemoController extends Controller
 {
@@ -32,9 +34,18 @@ class MemoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $trip_id)
     {
-        //
+        $user_id = Auth::id();
+
+        Memo::create([
+            'user_id' => $user_id,
+            'trip_id' => $trip_id,
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return to_route('dashboard.trips.memos.index', ['trip_id' => $trip_id]);
     }
 
     /**
