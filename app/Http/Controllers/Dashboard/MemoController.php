@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class MemoController extends Controller
@@ -10,9 +11,12 @@ class MemoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($trip_id)
     {
-        //
+        $trip = Trip::findOrFail($trip_id);
+        $memos = $trip->memos()->paginate(8);
+
+        return view('dashboard.memos.index', compact('trip', 'memos'));
     }
 
     /**

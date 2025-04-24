@@ -28,19 +28,19 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])
                 Route::get('/{trip_id}/edit', 'edit')->name('edit');
                 Route::put('/{trip_id}', 'update')->name('update');
                 Route::delete('/{trip_id}', 'destroy')->name('destroy');
-            });
 
-            Route::prefix('{trip_id}/memos')
-            ->controller(MemoController::class)
-            ->name('memos.')
-            ->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/create', 'create')->name('create');
-                Route::post('/', 'store')->name('store');
-                Route::get('/{memo_id}', 'show')->name('show');
-                Route::get('/{memo_id}/edit', 'edit')->name('edit');
-                Route::put('/{memo_id}', 'update')->name('update');
-                Route::delete('/{memo_id}', 'destroy')->name('destroy');
+                Route::prefix('{trip_id}/memos')
+                    ->controller(MemoController::class)
+                    ->name('memos.')
+                    ->group(function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/', 'store')->name('store');
+                        Route::get('/{memo_id}', 'show')->name('show');
+                        Route::get('/{memo_id}/edit', 'edit')->name('edit');
+                        Route::put('/{memo_id}', 'update')->name('update');
+                        Route::delete('/{memo_id}', 'destroy')->name('destroy');
+                    });
             });
     });
 
