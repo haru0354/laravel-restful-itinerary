@@ -22,9 +22,11 @@ class MemoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($trip_id)
     {
-        //
+        $trip_title = Trip::where('id', $trip_id)->firstOrFail()->title;
+
+        return view('dashboard.memos.create', compact('trip_id', 'trip_title'));
     }
 
     /**
