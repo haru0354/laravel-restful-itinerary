@@ -9,9 +9,15 @@
         <div class="max-w-7xl w-full mx-auto p-6 bg-white shadow-sm">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
                 @foreach ($memos as $memo)
-                <div class="p-6 border rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-gray-300 bg-gray-50">
+                <div class="relative p-6 border rounded-lg shadow-lg hover:shadow-2xl transition-shadow border-gray-300 bg-gray-50">
                     <h3 class="pb-1 mt-2 mb-4 text-xl text-center font-bold border-b border-dashed border-gray-700">{{ $memo->title }}</h3>
                     <p>{{ $memo->content }}</p>
+                    <x-ui.button-link
+                        route="{{ route('dashboard.trips.memos.show', ['trip_id' => $memo->trip_id, 'memo_id' => $memo->id]) }}"
+                        size="mini" color="gray"
+                        class="absolute top-0 right-0 rounded">
+                        📝詳細
+                    </x-ui.button-link>
                 </div>
                 @endforeach
                 <a href="{{ route('dashboard.trips.memos.create', ['trip_id' => $trip->id] ) }}" class="flex items-center justify-center min-h-[130px] p-6 rounded-lg shadow-md hover:shadow-lg border border-blue-300 bg-white hover:bg-blue-200 transition cursor-pointer">
