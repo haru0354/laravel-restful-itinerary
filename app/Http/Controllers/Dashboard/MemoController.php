@@ -62,9 +62,12 @@ class MemoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($trip_id, $memo_id)
     {
-        //
+        $trip_title = Trip::findOrFail($trip_id)->title;
+        $memo = Memo::findOrFail($memo_id);
+
+        return view('dashboard.memos.edit', compact('trip_title', 'memo'));
     }
 
     /**
