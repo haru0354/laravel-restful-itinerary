@@ -12,6 +12,7 @@
         'full' => 'w-full my-2 py-3 px-6',
         'normal' => 'min-w-[180px] my-2 py-3 px-8',
         'small' => 'min-w-[120px] my-2 py-3 px-4',
+        'mini' => 'p-1',
     ];
 
     $colorClass = $colors[$color] ?? $colors['blue'];
