@@ -73,9 +73,15 @@ class MemoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $trip_id, $memo_id)
     {
-        //
+        $memo = Memo::findOrFail($memo_id);
+
+        $memo->title = $request->title;
+        $memo->content = $request->content;
+        $memo->save();
+
+        return to_route('dashboard.trips.memos.show', ['trip_id' => $trip_id, 'memo_id' => $memo_id]);
     }
 
     /**
