@@ -87,8 +87,11 @@ class MemoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($trip_id, $memo_id)
     {
-        //
+        $memo = Memo::findOrFail($memo_id);
+        $memo->delete();
+
+        return to_route('dashboard.trips.memos.index', ['trip_id' => $trip_id, 'memo_id' => $memo_id]);
     }
 }
