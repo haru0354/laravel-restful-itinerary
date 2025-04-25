@@ -24,5 +24,4 @@
             <x-ui.button-link route="{{ route('dashboard.trips.show', ['trip_id' => $memo->trip_id]) }}" size="normal" color="green" class="block mx-auto w-[180px] rounded">旅程へ</x-ui.button-link>
         </div>
     </div>
-    </div>
 </x-app-layout>

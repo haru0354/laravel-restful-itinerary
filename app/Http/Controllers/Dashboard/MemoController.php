@@ -26,7 +26,7 @@ class MemoController extends Controller
      */
     public function create($trip_id)
     {
-        $trip_title = Trip::where('id', $trip_id)->firstOrFail()->title;
+        $trip_title = Trip::findOrFail($trip_id)->title;
 
         return view('dashboard.memos.create', compact('trip_id', 'trip_title'));
     }
@@ -51,9 +51,12 @@ class MemoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($trip_id, $memo_id)
     {
-        //
+        $trip_title = Trip::findOrFail($trip_id)->title;
+        $memo = Memo::findOrFail($memo_id);
+
+        return view('dashboard.memos.show', compact('trip_title', 'memo'));
     }
 
     /**
