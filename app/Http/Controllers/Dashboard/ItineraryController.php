@@ -49,9 +49,12 @@ class ItineraryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($trip_id, $itinerary_id)
     {
-        //
+        $trip_title = Trip::findOrFail($trip_id)->title;
+        $itinerary = Itinerary::findOrFail($itinerary_id);
+
+        return view('dashboard.itineraries.show', compact('trip_title', 'itinerary'));
     }
 
     /**
