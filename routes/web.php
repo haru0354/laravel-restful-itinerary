@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\TripController;
 use App\Http\Controllers\Dashboard\MemoController;
+use App\Http\Controllers\Dashboard\ItineraryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,19 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])
                 Route::get('/{trip_id}/edit', 'edit')->name('edit');
                 Route::put('/{trip_id}', 'update')->name('update');
                 Route::delete('/{trip_id}', 'destroy')->name('destroy');
+
+                Route::prefix('{trip_id}/itineraries')
+                    ->controller(ItineraryController::class)
+                    ->name('itineraries.')
+                    ->group(function () {
+                        // itinerariesの一覧（index）はtripのshowに表示する
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/', 'store')->name('store');
+                        Route::get('/{itinerary_id}', 'show')->name('show');
+                        Route::get('/{itinerary_id}/edit', 'edit')->name('edit');
+                        Route::put('/{itinerary_id}', 'update')->name('update');
+                        Route::delete('/{itinerary_id}', 'destroy')->name('destroy');
+                    });
 
                 Route::prefix('{trip_id}/memos')
                     ->controller(MemoController::class)
