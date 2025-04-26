@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Itinerary;
 use App\Models\Trip;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItineraryController extends Controller
 {
@@ -29,11 +31,21 @@ class ItineraryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $trip_id)
     {
-        //
-    }
+        $user_id = Auth::id();
 
+        Itinerary::create([
+            'user_id' => $user_id,
+            'trip_id' => $trip_id,
+            'date_and_time' => $request->date_and_time,
+            'title' => $request->title,
+            'content' => $request->content,
+            'hide_content' => $request->hide_content,
+        ]);
+
+        return to_route('dashboard.trips.show', ['trip_id' => $trip_id]);
+    }
     /**
      * Display the specified resource.
      */

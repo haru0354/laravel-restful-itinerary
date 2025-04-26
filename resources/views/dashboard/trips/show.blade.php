@@ -31,6 +31,9 @@
                     </x-ui.button-link>
                 </div>
                 @endforeach
+                <a href="{{ route('dashboard.trips.itineraries.create', ['trip_id' => $trip->id] ) }}" class="flex items-center justify-center min-h-[150px] mb-8 p-6 rounded-lg border border-blue-300 bg-white hover:bg-blue-200 transition cursor-pointer">
+                    ➕
+                </a>
                 <x-ui.button-link route="{{ route('dashboard.trips.memos.index', ['trip_id' => $trip->id]) }}" size="normal" color="green" class="block mx-auto w-[180px] rounded">メモの一覧へ</x-ui.button-link>
             </section>
 
