@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class ItineraryController extends Controller
@@ -18,9 +19,11 @@ class ItineraryController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($trip_id)
     {
-        //
+        $trip_title = Trip::findOrFail($trip_id)->title;
+
+        return view('dashboard.itineraries.create', compact('trip_id', 'trip_title'));
     }
 
     /**
