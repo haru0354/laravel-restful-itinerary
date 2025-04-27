@@ -55,14 +55,9 @@ class TripController extends Controller
      */
     public function show($trip_id)
     {
-        $trip = Trip::where('id', $trip_id)
-            ->select('id', 'start_date', 'end_date', 'title', 'destination')
-            ->first();
-
-        if (!$trip) {
-            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
-        }
-
+        $trip = Trip::with(['itineraries' => function ($query) {
+            $query->orderBy('date_and_time', 'asc');
+        }])->findOrFail($trip_id);
 
         return view('dashboard.trips.show', compact('trip'));
     }
