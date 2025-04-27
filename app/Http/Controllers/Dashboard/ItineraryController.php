@@ -88,8 +88,11 @@ class ItineraryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($trip_id, $itinerary_id)
     {
-        //
+        $itinerary = Itinerary::findOrFail($itinerary_id);
+        $itinerary->delete();
+
+        return to_route('dashboard.trips.show', ['trip_id' => $trip_id]);
     }
 }

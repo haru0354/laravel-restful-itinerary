@@ -20,6 +20,11 @@
                         追加情報
                     </x-form.textarea>
                 </x-form.form-container>
+                <form method="POST" action="{{ route('dashboard.trips.itineraries.destroy', ['trip_id' => $itinerary->trip_id, 'itinerary_id' => $itinerary->id]) }}">
+                    @csrf
+                    @method('DELETE')
+                    <x-ui.button size="normal" color="red" class="mt-8 block mx-auto rounded">削除する</x-ui.button>
+                </form>
             </section>
         </div>
     </div>
