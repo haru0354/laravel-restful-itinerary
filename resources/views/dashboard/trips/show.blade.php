@@ -16,10 +16,10 @@
                     <p class="mb-3">⌚️ {{ $itinerary->date_and_time }}</p>
                     <p class="mt-2">{{ $itinerary->content }}</p>
                     @if ($itinerary->hide_content)
-                    <!-- <button class="mt-4 hover:underline text-gray-500">
-                    🔽 補足情報を表示 🔽
-                    </button> -->
-                    <div id="hidden-content-{{ $itinerary->id }}" class="hidden mt-4 p-4">
+                    <button onclick="toggleContent('{{ $itinerary->id }}')"  class="mt-4 hover:underline text-gray-500">
+                        🔽 補足情報を表示 🔽
+                    </button>
+                    <div id="{{ $itinerary->id }}" class="hidden mt-4 p-4">
                         {{ $itinerary->hide_content }}
                     </div>
                     @endif
