@@ -60,10 +60,14 @@ class ItineraryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($trip_id, $itinerary_id)
     {
-        //
+        $trip_title = Trip::findOrFail($trip_id)->title;
+        $itinerary = Itinerary::findOrFail($itinerary_id);
+
+        return view('dashboard.itineraries.edit', compact('trip_title', 'itinerary'));
     }
+
 
     /**
      * Update the specified resource in storage.
