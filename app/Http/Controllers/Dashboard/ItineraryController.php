@@ -72,9 +72,17 @@ class ItineraryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $trip_id, $itinerary_id)
     {
-        //
+        $itinerary = Itinerary::findOrFail($itinerary_id);
+
+        $itinerary->date_and_time = $request->date_and_time;
+        $itinerary->title = $request->title;
+        $itinerary->content = $request->content;
+        $itinerary->hide_content = $request->hide_content;
+        $itinerary->save();
+
+        return to_route('dashboard.trips.show', ['trip_id' => $trip_id]);
     }
 
     /**
