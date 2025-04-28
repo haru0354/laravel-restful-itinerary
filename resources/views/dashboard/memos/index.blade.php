@@ -27,7 +27,7 @@
             <div class="my-8">
                 {{ $memos->links() }}
             </div>
-            <x-ui.button-link route="{{ route('dashboard.trips.show', ['trip_id' => $memo->trip_id]) }}" size="normal" color="green" class="block mx-auto w-[180px] rounded">旅程へ</x-ui.button-link>
+            <x-ui.button-link route="{{ route('dashboard.trips.show', ['trip_id' => $trip->id]) }}" size="normal" color="green" class="block mx-auto w-[180px] rounded">旅程へ</x-ui.button-link>
         </div>
     </div>
 </x-app-layout>

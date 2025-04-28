@@ -21,11 +21,8 @@
                 <x-form.input name="title" value="{{ $trip->title }}">旅のしおりのタイトル</x-form.input>
                 <x-form.input name="destination" value="{{ $trip->destination }}">旅行先</x-form.input>
             </x-form.form-container>
-            <form method="POST" action="{{ route('dashboard.trips.destroy', [ 'trip_id' => $trip->id ]) }}">
-                @csrf
-                @method('DELETE')
-                <x-ui.button size="normal" color="red" class="mt-8 block mx-auto rounded">削除する</x-ui.button>
-            </form>
+            <x-ui.delete-modal title="{{ $trip->title }}" buttonTitle="削除する"
+                action="{{ route('dashboard.trips.destroy', [ 'trip_id' => $trip->id ]) }}" />
         </div>
     </div>
 </x-app-layout>
