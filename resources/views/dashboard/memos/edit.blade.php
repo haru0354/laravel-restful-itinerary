@@ -13,11 +13,8 @@
                 <x-form.input name="title" value="{{ $memo->title }}">メモタイトル</x-form.input>
                 <x-form.input name="content" value="{{ $memo->content }}">メモの内容</x-form.input>
             </x-form.form-container>
-            <form method="POST" action="{{ route('dashboard.trips.memos.destroy', ['trip_id' => $memo->trip_id, 'memo_id' => $memo->id]) }}">
-                @csrf
-                @method('DELETE')
-                <x-ui.button size="normal" color="red" class="mt-8 block mx-auto rounded">削除する</x-ui.button>
-            </form>
+            <x-ui.delete-modal title="{{ $memo->title }}" buttonTitle="削除する"
+                action="{{ route('dashboard.trips.memos.destroy', ['trip_id' => $memo->trip_id, 'memo_id' => $memo->id]) }}" />
         </div>
     </div>
 </x-app-layout>
