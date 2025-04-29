@@ -28,4 +28,14 @@ class ItineraryRequest extends FormRequest
             'hide_content' => 'nullable|string|max:200',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'date_and_time' => '旅程の日時',
+            'title' => '旅程の目的',
+            'content' => '旅程の詳細',
+            'hide_content' => '追加情報',
+        ];
+    }
 }
