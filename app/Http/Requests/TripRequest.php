@@ -28,4 +28,14 @@ class TripRequest extends FormRequest
             'destination' => 'nullable|string|max:20',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'start_date' => '出発日',
+            'end_date' => '帰宅日',
+            'title' => '旅のしおりのタイトル',
+            'destination' => '旅行先',
+        ];
+    }
 }
