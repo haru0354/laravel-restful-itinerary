@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use App\Models\Trip;
 use Illuminate\Http\Request;
@@ -34,7 +35,7 @@ class MemoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $trip_id)
+    public function store(MemoRequest $request, $trip_id)
     {
         $user_id = Auth::id();
 
@@ -73,7 +74,7 @@ class MemoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $trip_id, $memo_id)
+    public function update(MemoRequest $request, $trip_id, $memo_id)
     {
         $memo = Memo::findOrFail($memo_id);
 

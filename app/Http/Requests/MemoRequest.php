@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TripRequest extends FormRequest
+class MemoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,8 @@ class TripRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date|after_or_equal:start_date',
             'title' => 'required|string|max:30',
-            'destination' => 'nullable|string|max:20',
+            'content' => 'nullable|string|max:200',
         ];
     }
 }
