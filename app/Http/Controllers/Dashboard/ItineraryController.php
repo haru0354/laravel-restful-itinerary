@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItineraryRequest;
 use App\Models\Itinerary;
 use App\Models\Trip;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class ItineraryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $trip_id)
+    public function store(ItineraryRequest $request, $trip_id)
     {
         $user_id = Auth::id();
 
@@ -72,7 +73,7 @@ class ItineraryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $trip_id, $itinerary_id)
+    public function update(ItineraryRequest $request, $trip_id, $itinerary_id)
     {
         $itinerary = Itinerary::findOrFail($itinerary_id);
 
