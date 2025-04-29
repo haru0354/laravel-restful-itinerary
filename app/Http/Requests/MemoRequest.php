@@ -26,4 +26,12 @@ class MemoRequest extends FormRequest
             'content' => 'nullable|string|max:200',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'メモのタイトル',
+            'content' => 'メモする内容',
+        ];
+    }
 }
