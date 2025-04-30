@@ -60,7 +60,13 @@ class TripController extends Controller
             $query->orderBy('date_and_time', 'asc');
         }])->findOrFail($trip_id);
 
-        return view('dashboard.trips.show', compact('trip'));
+        $groupedItineraries = $trip->itineraries
+            ->sortBy('date_and_time')
+            ->groupBy(function ($itinerary) {
+                return \Carbon\Carbon::parse($itinerary->date_and_time)->format('Y-m-d');
+            });
+            
+        return view('dashboard.trips.show', compact('trip', 'groupedItineraries'));
     }
 
 
