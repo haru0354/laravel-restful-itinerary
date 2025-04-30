@@ -8,14 +8,15 @@
     <div class="py-12">
         <div class="max-w-7xl w-full mx-auto p-6 bg-white shadow-sm">
             <section>
+                <h2 class="text-2xl font-bold mb-4 mt-6">📅 {{ \Carbon\Carbon::parse($itinerary->date_and_time )->format('Y年m月d日') }}</h2>
                 <div class="relative flex flex-col mb-8 p-6 border rounded-lg border-gray-300 bg-gray-50">
                     <h3 class="mb-2 text-xl font-bold">🗺 {{ $itinerary->title }}</h3>
-                    <p class="mb-3">⌚️ {{ $itinerary->date_and_time }}</p>
+                    <p class="mb-3">⌚️ {{ \Carbon\Carbon::parse($itinerary->date_and_time)->format('H:i') }}</p>
                     <p class="mt-2">{{ $itinerary->content }}</p>
                     @if ($itinerary->hide_content)
-                    <button class="mt-4 hover:underline text-gray-500">
+                    <p class="text-center mt-4 text-gray-500">
                         🔽 補足情報を表示 🔽
-                    </button>
+                    </p>
                     <div class="mt-4 p-4">
                         {{ $itinerary->hide_content }}
                     </div>
