@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TripRequest;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,7 @@ class TripController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TripRequest $request)
     {
         $userId = Auth::id();
 
@@ -82,7 +83,7 @@ class TripController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $trip_id)
+    public function update(TripRequest $request, string $trip_id)
     {
         $trip = Trip::where('id', $trip_id)
             ->select('id', 'start_date', 'end_date', 'title', 'destination')

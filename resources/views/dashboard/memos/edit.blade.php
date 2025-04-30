@@ -11,7 +11,7 @@
                 title="メモの編集" buttonTitle="編集する" backRoute="{{ route('dashboard.trips.memos.show', ['trip_id' => $memo->trip_id, 'memo_id' =>$memo->id]) }}">
                 @method('PUT')
                 <x-form.input name="title" value="{{ $memo->title }}">メモタイトル</x-form.input>
-                <x-form.input name="content" value="{{ $memo->content }}">メモの内容</x-form.input>
+                <x-form.textarea name="content" value="{{ $memo->content }}">メモの内容</x-form.textarea>
             </x-form.form-container>
             <x-ui.delete-modal title="{{ $memo->title }}" buttonTitle="削除する"
                 action="{{ route('dashboard.trips.memos.destroy', ['trip_id' => $memo->trip_id, 'memo_id' => $memo->id]) }}" />

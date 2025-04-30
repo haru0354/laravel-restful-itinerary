@@ -10,7 +10,7 @@
             <section>
                 <x-form.form-container method="POST" action="{{ route('dashboard.trips.itineraries.store', ['trip_id' => $trip_id])}}"
                     title="旅程の追加" buttonTitle="旅程を追加する" backRoute="{{ route('dashboard.trips.show', ['trip_id' => $trip_id]) }}">
-                    <x-form.input type="datetime-local" name="date_and_time">旅程の目的</x-form.input>
+                    <x-form.input type="datetime-local" name="date_and_time">日時</x-form.input>
                     <x-form.input name="title">旅程の目的</x-form.input>
                     <x-form.textarea name="content">旅程の詳細</x-form.textarea>
                     <x-form.textarea name="hide_content">追加情報</x-form.textarea>
