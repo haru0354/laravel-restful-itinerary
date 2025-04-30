@@ -7,9 +7,9 @@
 
     <div class="py-12">
         <div class="max-w-7xl w-full mx-auto p-6 bg-white shadow-sm">
-            <!-- 旅程の一覧表示のセクション -->
+            <!-- 旅程の一覧表示 -->
             <section>
-                @foreach ($groupedItineraries as $date  => $items)
+                @foreach ($groupedItineraries as $date => $items)
                 <h2 class="text-2xl font-bold mb-4 mt-6">📅 {{ \Carbon\Carbon::parse($date )->format('Y年m月d日') }}</h2>
                 @foreach ($items as $itinerary)
                 <div class="relative flex flex-col mb-8 p-6 border rounded-lg border-gray-300 bg-gray-50">
@@ -40,7 +40,7 @@
                 <x-ui.button-link route="{{ route('dashboard.trips.memos.index', ['trip_id' => $trip->id]) }}" size="normal" color="green" class="block mx-auto w-[180px] rounded">メモの一覧へ</x-ui.button-link>
             </section>
 
-            <!-- 旅のしおりの詳細セクション -->
+            <!-- 旅のしおりの詳細 -->
             <section>
                 <div class="relative w-full max-w-[450px] mx-auto p-4 my-16 border border-dashed rounded border-gray-800 ">
                     <p>タイトル：{{ $trip->title }}</p>
@@ -56,7 +56,6 @@
                 </div>
                 <x-ui.button-link route="{{ route('dashboard.trips.index') }}" size="normal" color="gray" class="block mx-auto w-[180px] rounded">旅のしおりの一覧</x-ui.button-link>
             </section>
-
         </div>
     </div>
 </x-app-layout>
