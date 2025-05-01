@@ -31,6 +31,7 @@
             <main>
                 {{ $slot }}
             </main>
+            <x-ui.footer-menu />
         </div>
     </body>
 </html>
