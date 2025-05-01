@@ -56,11 +56,15 @@ class TripController extends Controller
      */
     public function show($trip_id)
     {
-        $trip = Trip::with(['itineraries' => function ($query) {
-            $query->orderBy('date_and_time', 'asc');
-        }])->findOrFail($trip_id);
+        $trip = Trip::findOrFail($trip_id);
 
-        return view('dashboard.trips.show', compact('trip'));
+        $groupedItineraries = $trip->itineraries
+            ->sortBy('date_and_time')
+            ->groupBy(function ($itinerary) {
+                return \Carbon\Carbon::parse($itinerary->date_and_time)->format('Y-m-d');
+            });
+            
+        return view('dashboard.trips.show', compact('trip', 'groupedItineraries'));
     }
 
 
@@ -69,13 +73,7 @@ class TripController extends Controller
      */
     public function edit(string $trip_id)
     {
-        $trip = Trip::where('id', $trip_id)
-            ->select('id', 'start_date', 'end_date', 'title', 'destination')
-            ->first();
-
-        if (!$trip) {
-            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
-        }
+        $trip = Trip::findOrFail($trip_id);
 
         return view('dashboard.trips.edit', compact('trip'));
     }
@@ -85,13 +83,7 @@ class TripController extends Controller
      */
     public function update(TripRequest $request, string $trip_id)
     {
-        $trip = Trip::where('id', $trip_id)
-            ->select('id', 'start_date', 'end_date', 'title', 'destination')
-            ->first();
-
-        if (!$trip) {
-            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
-        }
+        $trip = Trip::findOrFail($trip_id);
 
         $trip->start_date = $request->start_date;
         $trip->end_date = $request->end_date;
@@ -107,12 +99,7 @@ class TripController extends Controller
      */
     public function destroy(string $trip_id)
     {
-        $trip = Trip::find($trip_id);
-
-        if (!$trip) {
-            return redirect()->route('dashboard.trips.index')->with('error', '旅のしおりが見つかりませんでした。');
-        }
-
+        $trip = Trip::findOrFail($trip_id);
         $trip->delete();
 
         return to_route('dashboard.trips.index');
