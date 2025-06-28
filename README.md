@@ -10,6 +10,14 @@ RESTful設計でのLaravelフルスタックの旅程表アプリです。
 
 ⇒ https://github.com/haru0354/laravel-livewire-itinerary.git　（Livewire版）
 
+## 技術スタック
+
+- PHP 8.2 / Laravel 10（バックエンド）
+- Blade（テンプレートエンジン）
+- Tailwind CSS（スタイリング）
+- MySQL(DB)
+- Laravel Breeze（認証）
+
 ## 主な機能
 
 - 旅のしおりのCRUD
@@ -26,13 +34,19 @@ RESTful設計でのLaravelフルスタックの旅程表アプリです。
 
 また、「帰宅日が出発日より前になっていないか？」「各項目は入力されているか？」など、フォームバリデーションでミスを防ぎます。
 
-## 技術スタック
+## アプリのサムネイル画像
 
-- PHP 8.2 / Laravel 10（バックエンド）
-- Blade（テンプレートエンジン）
-- Tailwind CSS（スタイリング）
-- MySQL(DB)
-- Laravel Breeze（認証）
+|旅のしおり | メモの一覧 |
+|-------|-------|
+| ![旅のしおり](/public/image/laravel-restful-shiori.webp) | ![メモの一覧](/public/image/laravel-restful-memo.webp) |
+| 旅程の一覧 | スマホ画面での表示 |
+| ![旅程の一覧](/public/image/laravel-restful-ryoteihyou.webp) | ![スマホ画面での表示](/public/image/laravel-restful-sumaho.webp) |
+| フォーム | フォームバリデーション |
+| ![フォーム](/public/image/laravel-restful-form01.webp) | ![フォームバリデーション](/public/image/laravel-restful-form.webp) |
+
+各サムネイル画像の仕様と実際のアプリは、今後、変更される可能性があります。
+
+「リポジトリの公開日：2025/06/28」での最新のサムネイル画像となっています。
 
 ## セットアップ手順
 
@@ -73,3 +87,4 @@ php artisan serve
 | `php artisan migrate --seed` | DB に初期データの挿入                  |
 | `php artisan serve`          | Laravel のローカル開発サーバーを起動   |
 | `npm run dev`                | フロントエンドのビルドと監視を開始     |
+
