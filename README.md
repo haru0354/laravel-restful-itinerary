@@ -1,5 +1,7 @@
 # Laravel RESTfulの旅程表アプリの概要
 
+| ![旅のしおり](/public/image/laravel-restful-shiori.webp) | ![メモの一覧](/public/image/laravel-restful-memo.webp) |
+
 RESTful設計でのLaravelフルスタックの旅程表アプリです。
 
 基礎学習した内容を元にアウトプットとして簡易的に短時間で制作しており、学習目的に制作しています。
